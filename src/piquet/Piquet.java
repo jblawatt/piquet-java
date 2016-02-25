@@ -28,15 +28,13 @@ public class Piquet {
     }
 
     public void createSets() {
-        List<Cart> carts;
         ISet current = this._setPlayer1;
 
         this._deck.shuffle();
-        carts = this._deck.getCarts();
 
-        while (carts.size() > 8) {
+        while (this._deck.size() > 8) {
             for (int i = 0; i < 2; i++) {
-                current.add(carts.remove(0));
+                current.add(this._deck.remove(0));
             }
             if (current.equals(this._setPlayer1)) {
                 current = this._setPlayer2;
@@ -45,8 +43,8 @@ public class Piquet {
             }
         }
 
-        while (carts.size() > 0) {
-            this._talon.add(carts.remove(0));
+        while (this._deck.size() > 0) {
+            this._talon.add(this._deck.remove(0));
         }
 
     }
