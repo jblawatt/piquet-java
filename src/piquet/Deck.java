@@ -43,9 +43,7 @@ public class Deck extends ArrayList<ICart> implements IDeck {
         this.add(new Cart(TYPE_9, COLOR_DIAMOND));
         this.add(new Cart(TYPE_8, COLOR_DIAMOND));
         this.add(new Cart(TYPE_7, COLOR_DIAMOND));
-
-        this.shuffle();
-
+        
     }
 
     public void shuffle() {

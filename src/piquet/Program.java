@@ -6,9 +6,11 @@ package piquet;
 public class Program {
 
     public static void main (String[] args) {
-        Piquet game = new Piquet(
-            new Player("Jens"),
-            new Player("Jessica"));
+
+        IPlayer p1 = new Player(args[0]);
+        IPlayer p2 = new Player(args[1]);
+
+        Piquet game = new Piquet(p1, p2, p1);
         game.play();
     }
 

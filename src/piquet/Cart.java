@@ -27,6 +27,14 @@ public class Cart implements ICart {
         this._color = color;
     }
 
+    public Integer getType() {
+        return this._type;
+    }
+
+    public Integer getColor() {
+        return this._type;
+    }
+
     @Override
     public String toString() {
         return Cart.class.toString() + ": type=" + this._type + ", color=" + this._color;

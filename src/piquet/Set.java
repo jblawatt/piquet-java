@@ -2,25 +2,21 @@ package piquet;
 
 import java.util.*;
 
-/**
- * Created by jenko on 09.02.16.
- */
-public class Set implements ISet {
+public class Set extends ArrayList<ICart> implements ISet {
 
     protected IPlayer _player;
-    protected List<ICart> _set;
 
-    public Set(IPlayer player) {
+    public Set (IPlayer player) {
+        super();
         this._player = player;
-        this._set = new ArrayList<ICart>();
     }
 
-    public void add(ICart cart) {
-        this._set.add(cart);
+    public void setPlayer(IPlayer player) {
+        this._player = player;
     }
 
-    public int size() {
-        return this._set.size();
+    public IPlayer getPlayer() {
+        return this._player;
     }
 
 }

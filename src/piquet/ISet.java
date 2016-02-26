@@ -1,11 +1,13 @@
 package piquet;
 
+import java.util.List;
+
 /**
  * Created by jenko on 09.02.16.
  */
-public interface ISet {
+public interface ISet extends List<ICart> {
 
-    void add(ICart cart);
-    int size();
+    IPlayer getPlayer();
+    void setPlayer(IPlayer player);
 
 }
