@@ -6,9 +6,6 @@ import piquet.*;
 import piquet.exceptions.AlreadyChangedException;
 import piquet.exceptions.ToManyChangesException;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import static org.junit.Assert.*;
 
 public class ShuffleTest {

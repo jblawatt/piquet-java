@@ -2,6 +2,7 @@ package piquet.calls;
 
 import piquet.*;
 import piquet.comparators.SequenceCallComparator;
+import piquet.exceptions.IllegalCallException;
 import piquet.exceptions.IllegalSequenceCallException;
 import piquet.exceptions.InvalidException;
 import piquet.exceptions.InvalidFollowupException;
@@ -11,7 +12,7 @@ import piquet.validators.SameColorValidator;
 
 import java.util.*;
 
-public class SequenceCall implements ICall, IPointable {
+public class SequenceCall extends Call {
 
     public final Integer ILLEGAL_SEQUENCE_CALL_CARTS = 3001;
     public final Integer ILLEGAL_SEQUENCE_CALL_FOLLOWS = 3002;
@@ -30,19 +31,10 @@ public class SequenceCall implements ICall, IPointable {
         POINTS_MAP = Collections.unmodifiableMap(p);
     }
 
-    protected Piquet _game;
-    protected IPlayer _player;
-    protected ICart[] _call;
-    protected ICart[] _answer;
-    protected Boolean _answered = false;
-
     protected final String NAME = "SEQUENCE CALL";
 
-    public SequenceCall(Piquet game, IPlayer player, ICart[] carts) throws IllegalSequenceCallException {
-        this._game = game;
-        this._player = player;
-        this._call = carts;
-        this.validate(carts);
+    public SequenceCall(Piquet game, IPlayer player, ICart[] carts) throws IllegalCallException {
+        super(game, player, carts);
     }
 
     public String getName() {
@@ -125,10 +117,8 @@ public class SequenceCall implements ICall, IPointable {
     public void answer(ICart[] carts) throws IllegalSequenceCallException {
         if (carts != null) {
             this.validate(carts);
-            this._answer = carts;
-        } else {
-            this._answer = null;
         }
+        this._answer = carts;
         this._answered = true;
     }
 

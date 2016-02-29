@@ -7,7 +7,6 @@ import java.util.Comparator;
 
 public class SequenceCallComparator implements Comparator<ICart[]> {
 
-    @Override
     public int compare(ICart[] o1, ICart[] o2) {
         if (o1 == null && o2 == null) {
             return 0;

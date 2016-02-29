@@ -2,6 +2,7 @@ package piquet;
 
 import piquet.calls.ICall;
 import piquet.exceptions.AlreadyChangedException;
+import piquet.exceptions.IllegalCallException;
 import piquet.exceptions.InvalidOperationException;
 import piquet.exceptions.ToManyChangesException;
 
@@ -135,7 +136,7 @@ public class Piquet {
         this._calls.add(call);
     }
 
-    public void answer(ICart[] carts) throws InvalidOperationException {
+    public void answer(ICart[] carts) throws InvalidOperationException, IllegalCallException {
         if (this._calls.size() == 0) {
             throw new InvalidOperationException("Es steht keine Meldung für die Antwort zur Verfügung.");
         } else {
@@ -143,10 +144,14 @@ public class Piquet {
             if (lastCall.wasAnswered()) {
                 throw new InvalidOperationException("Die letzte Meldung wurde bereits beantwortet.");
             } else {
-                lastCall.setAnswer(carts);
+                lastCall.answer(carts);
             }
         }
 
+    }
+
+    public ICall lastCall() {
+        return this._calls.get(this._calls.size() - 1);
     }
 
 }
